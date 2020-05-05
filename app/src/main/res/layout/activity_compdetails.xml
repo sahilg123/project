@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".compdetails">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="#2699FB"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="105dp"
+            android:layout_marginRight="105dp"
+            android:gravity="center"
+            android:text="Company"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView2"
+
+
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+
+            android:text="Details"
+            android:textSize="36sp" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="346dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="36dp">
+
+                <TextView
+                    android:id="@+id/companyname1"
+                    android:layout_width="117dp"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="COMPANY NAME"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/editText"
+                    android:layout_width="235dp"
+                    android:layout_height="50dp"
+                    android:layout_toRightOf="@id/companyname1"
+                    android:background="@drawable/border"
+                    android:ems="10"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:inputType="textPersonName" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="346dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/address1"
+                    android:layout_width="117dp"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="ADDRESS"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/editaddress1"
+                    android:layout_width="235dp"
+                    android:layout_height="50dp"
+                    android:layout_toRightOf="@id/address1"
+                    android:background="@drawable/border"
+                    android:ems="10"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:inputType="textPostalAddress" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="346dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/industry1"
+                    android:layout_width="117dp"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="INDUSTRY"
+                    android:textSize="12sp" />
+
+                <Spinner
+                    android:id="@+id/spinindustry1"
+                    android:layout_width="235dp"
+                    android:layout_height="50dp"
+                    android:layout_toRightOf="@id/industry1"
+                    android:background="@drawable/border"
+                    android:ems="10" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="346dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/category1"
+                    android:layout_width="117dp"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="INDUSTRY"
+                    android:textSize="12sp" />
+
+                <Spinner
+                    android:id="@+id/spincategory1"
+                    android:layout_width="235dp"
+                    android:layout_height="50dp"
+                    android:layout_toRightOf="@id/category1"
+                    android:background="@drawable/border"
+                    android:ems="10" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="346dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/gst1"
+                    android:layout_width="117dp"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="GST NUMBER"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/editgst1"
+                    android:layout_width="235dp"
+                    android:layout_height="50dp"
+                    android:layout_toRightOf="@id/gst1"
+                    android:background="@drawable/border"
+                    android:ems="10"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:inputType="textPersonName" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="346dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/mobile1"
+                    android:layout_width="117dp"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="MOBILE NO"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/editmobile1"
+                    android:layout_width="235dp"
+                    android:layout_height="50dp"
+                    android:layout_toRightOf="@id/mobile1"
+                    android:background="@drawable/border"
+                    android:ems="10"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:inputType="phone" />
+
+            </RelativeLayout>
+            <Button
+                android:id="@+id/continue1"
+                android:layout_width="327dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="65dp"
+                android:radius="2dp"
+                android:text="LET'S START"
+                android:layout_marginBottom="35dp"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

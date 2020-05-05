@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".otp">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#2699FB"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+       />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/otp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="48dp"
+            android:layout_marginRight="48dp"
+            android:paddingBottom="5dp"
+            android:text="OTP"
+            android:textColor="#2699FB" />
+
+        <EditText
+            android:id="@+id/otp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_above="@id/timer"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="48dp"
+            android:layout_marginRight="48dp"
+            android:background="@drawable/border"
+            android:ems="10"
+            android:hint="Enter OTP"
+            android:maxLength="6"
+            android:inputType="number"
+            android:paddingLeft="18dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:textSize="14dp"
+            tools:textColorHint="#2699fb" />
+
+        <TextView
+            android:id="@+id/timer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="48dp"
+            android:paddingBottom="5dp"
+            android:text="Valid for 60 sec"
+            android:textColor="#2699FB"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/letsstart"
+            style="@style/Widget.AppCompat.Button"
+
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="48dp"
+
+
+            android:layout_marginRight="48dp"
+            android:layout_marginBottom="54dp"
+            android:background="@drawable/mybutton"
+            android:fadingEdge="horizontal|vertical"
+            android:radius="15dp"
+            android:text="Verify"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="18sp"
+            android:textStyle="bold"
+           android:layout_alignParentBottom="true"
+
+
+            tools:layout_marginLeft="20dp" />
+
+
+    </RelativeLayout>
+</RelativeLayout>
