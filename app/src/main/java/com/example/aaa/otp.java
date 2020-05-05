@@ -69,9 +69,7 @@ letsStart.setOnClickListener(new View.OnClickListener() {
 });
     }
     private void requestPhoneAuth(String phoneNumber){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
+
                 CountDownTimer countDownTimer=new CountDownTimer(timeInMiliSeconds,1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
@@ -93,8 +91,8 @@ letsStart.setOnClickListener(new View.OnClickListener() {
 
                     }
                 }.start();
-            }
-        }).start();
+
+
         PhoneAuthProvider.getInstance().verifyPhoneNumber(phoneNumber, 60L, TimeUnit.SECONDS, this,
                 new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
