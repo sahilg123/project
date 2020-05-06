@@ -43,9 +43,9 @@
                 android:layout_marginTop="43dp"
                 android:ems="10"
                 android:gravity="center"
-                android:inputType="textPersonName"
-                android:text="Create an Account"
-                android:textSize="20dp"
+
+                android:text="@string/create_an_account"
+                android:textSize="20sp"
                 android:textStyle="bold" />
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -64,9 +64,9 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="48dp"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Full Name"
-                    android:textSize="12dp" />
+
+                    android:text="@string/full_name"
+                    android:textSize="12sp" />
 
                 <EditText
                     android:id="@+id/name"
@@ -78,12 +78,14 @@
                     android:layout_marginRight="48dp"
                     android:background="@drawable/border"
                     android:ems="10"
-
+                    android:hint="@string/name"
                     android:inputType="textPersonName"
                     android:paddingLeft="18dp"
+                    android:paddingRight="18dp"
                     android:paddingTop="12dp"
                     android:paddingBottom="12dp"
-                    android:textSize="14dp" />
+                    android:textSize="14sp"
+                    android:importantForAutofill="no" />
               </RelativeLayout>
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -99,9 +101,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="48dp"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Email"
-                    android:textSize="12dp" />
+                    android:text="@string/email"
+                    android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/email"
@@ -115,9 +116,12 @@
                 android:ems="10"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="18dp"
+                android:paddingRight="18dp"
                 android:paddingTop="12dp"
                 android:paddingBottom="12dp"
-                android:textSize="14dp" />
+                android:textSize="14sp"
+                android:hint="@string/email"
+                android:importantForAutofill="no" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -133,10 +137,8 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="48dp"
                         android:ems="10"
-
-                        android:inputType="textPersonName"
-                        android:text="Password"
-                        android:textSize="12dp" />
+                        android:text="@string/password"
+                        android:textSize="12sp" />
 
                     <EditText
                         android:id="@+id/password"
@@ -148,11 +150,14 @@
                         android:layout_marginRight="48dp"
                         android:background="@drawable/border"
                         android:ems="10"
+                        android:hint="@string/password"
                         android:inputType="textPassword"
                         android:paddingLeft="18dp"
+                        android:paddingRight="18dp"
                         android:paddingTop="12dp"
                         android:paddingBottom="12dp"
-                        android:textSize="14dp" />
+                        android:textSize="14sp"
+                        android:importantForAutofill="no" />
                 </RelativeLayout>
 
                 <TextView
@@ -164,10 +169,8 @@
                     android:layout_marginTop="340dp"
                     android:ems="10"
                     android:gravity="center"
-                    android:inputType="textPersonName"
-
-                    android:text="Personal Information"
-                    android:textSize="16dp"
+                    android:text="@string/personal_information"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -183,9 +186,8 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="48dp"
                         android:ems="10"
-
-                        android:text="Mobile number"
-                        android:textSize="12dp" />
+                        android:text="@string/mobile_number"
+                        android:textSize="12sp" />
 
                     <EditText
                         android:id="@+id/mobileno1"
@@ -197,11 +199,14 @@
                         android:layout_centerHorizontal="true"
                         android:background="@drawable/border"
                         android:ems="10"
+                        android:hint="@string/mobile_number"
                         android:inputType="phone"
                         android:paddingLeft="18dp"
+                        android:paddingRight="18dp"
                         android:paddingTop="12dp"
                         android:paddingBottom="12dp"
-                        android:textSize="14dp" />
+                        android:textSize="14sp"
+                        android:importantForAutofill="no" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -213,12 +218,12 @@
                         android:id="@+id/dateofbirth"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="48dp"
                         android:layout_marginLeft="48dp"
                         android:layout_marginTop="5dp"
                         android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="Date of Birth"
-                        android:textSize="12dp" />
+                        android:text="@string/date_of_birth"
+                        android:textSize="12sp" />
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -227,28 +232,29 @@
                         android:layout_marginRight="48dp">
                         <EditText
                             android:id="@+id/date"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="48dp"
-                            android:layout_centerHorizontal="true"
-
                             android:layout_marginTop="25dp"
                             android:layout_weight="1"
                             android:background="@drawable/border"
                             android:ems="10"
                             android:inputType="date"
                             android:paddingLeft="18dp"
+                            android:paddingRight="18dp"
                             android:paddingTop="12dp"
                             android:paddingBottom="12dp"
-                            android:textSize="14dp" />
+                            android:textSize="14sp"
+                            android:hint="@string/date_of_birth"
+                            android:importantForAutofill="no" />
 
                         <ImageButton
                             android:id="@+id/datebutton"
                             android:layout_width="35dp"
                             android:layout_height="48dp"
-
                             android:layout_marginTop="25dp"
                             android:background="@drawable/calender"
-                            android:text="C" />
+                            android:text="@string/calender_image"
+                            android:contentDescription="@string/todo" />
                     </LinearLayout>
                 </RelativeLayout>
 
@@ -263,29 +269,25 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="48dp"
+                        android:layout_marginStart="48dp"
                         android:layout_marginTop="5dp"
-
                         android:ems="10"
-
-                        android:inputType="textPersonName"
-                        android:text="Country/Region"
-                        android:textSize="12dp" />
+                        android:text="@string/country_region"
+                        android:textSize="12sp" />
 
                     <Spinner
                         android:id="@+id/spinner1"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-
                         android:layout_marginRight="48dp"
                         android:layout_marginLeft="48dp"
                         android:layout_marginTop="25dp"
                         android:background="@drawable/border"
-
                         android:paddingLeft="18dp"
+                        android:paddingRight="18dp"
                         android:paddingTop="12dp"
                         android:paddingBottom="12dp"
-
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -299,13 +301,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="48dp"
+                        android:layout_marginStart="48dp"
                         android:layout_marginTop="5dp"
-
                         android:ems="10"
-
-                        android:inputType="textPersonName"
-                        android:text="State"
-                        android:textSize="12dp" />
+                        android:text="@string/state"
+                        android:textSize="12sp" />
 
                     <Spinner
 
@@ -317,10 +317,10 @@
                         android:background="@drawable/border"
                         android:layout_marginRight="48dp"
                         android:paddingLeft="18dp"
+                        android:paddingRight="18dp"
                         android:paddingTop="12dp"
                         android:paddingBottom="12dp"
-
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -334,29 +334,27 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="48dp"
+                        android:layout_marginStart="48dp"
                         android:layout_marginTop="5dp"
-
                         android:ems="10"
-
-                        android:inputType="textPersonName"
-                        android:text="City"
-                        android:textSize="12dp" />
+                        android:text="@string/city"
+                        android:textSize="12sp" />
 
                     <Spinner
 
                         android:id="@+id/spinner3"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-
                         android:layout_marginLeft="48dp"
                         android:layout_marginRight="48dp"
                         android:layout_marginTop="25dp"
                         android:background="@drawable/border"
 
                         android:paddingLeft="18dp"
+                        android:paddingRight="18dp"
                         android:paddingTop="12dp"
                         android:paddingBottom="12dp"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -369,12 +367,12 @@
                         android:id="@+id/Street"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="58dp"
+                        android:layout_marginLeft="48dp"
+                        android:layout_marginRight="48dp"
                         android:layout_marginTop="5dp"
                         android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="Street"
-                        android:textSize="12dp" />
+                        android:text="@string/street"
+                        android:textSize="12sp" />
 
                     <EditText
                         android:id="@+id/street1"
@@ -388,9 +386,12 @@
                         android:ems="10"
                         android:inputType="textPersonName"
                         android:paddingLeft="18dp"
+                        android:paddingRight="18dp"
                         android:paddingTop="12dp"
                         android:paddingBottom="12dp"
-                        android:textSize="14dp" />
+                        android:textSize="14sp"
+                        android:hint="@string/street"
+                        android:importantForAutofill="no" />
                 </RelativeLayout>
 
                 <Button
@@ -400,7 +401,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="940dp"
-                    android:text="CONTINUE" />
+                    android:text="@string/continue1" />
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
