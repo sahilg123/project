@@ -7,7 +7,7 @@
     tools:context=".home">
 
     <Button
-        android:id="@+id/letsstart"
+        android:id="@+id/login"
         style="@style/Widget.AppCompat.Button"
 
         android:layout_width="126dp"
@@ -17,6 +17,7 @@
         android:layout_marginTop="18dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="24dp"
+        android:textColor="#FFFFFF"
         android:background="@drawable/mybutton"
         android:fadingEdge="horizontal|vertical"
         android:radius="15dp"
@@ -47,6 +48,7 @@
         android:text="Register as Business"
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/personalbutton"
@@ -68,6 +70,7 @@
         android:fadingEdge="horizontal|vertical"
         android:radius="15dp"
         android:text="REGISTER AS PERSONAL"
+        android:textColor="#FFFFFF"
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="18sp"

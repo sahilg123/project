@@ -11,11 +11,12 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".addsupplier"></activity>
         <activity android:name=".otp"
-            android:parentActivityName=".compdetails"/>
+            android:parentActivityName=".create_acc_busi"/>
         <activity android:name=".SignupStep1by3" />
         <activity android:name=".compdetails" />
         <activity android:name=".login" />
-        <activity android:name=".create_acc_busi" />
+        <activity android:name=".create_acc_busi"
+            android:parentActivityName=".home"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".home" />
+        <activity android:name=".home"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

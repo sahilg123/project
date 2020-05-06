@@ -113,6 +113,7 @@ letsStart.setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
+
                         verifyAuth(phoneAuthCredential);
                     }
                     @Override

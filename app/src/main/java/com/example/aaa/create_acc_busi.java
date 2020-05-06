@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.auth.PhoneAuthCredential;
 
@@ -32,7 +33,7 @@ public class create_acc_busi extends AppCompatActivity {
     PhoneAuthCredential credential;
     ImageButton date;
     EditText date1;
-    EditText phone;
+    EditText phone,name;
     DatePickerDialog datePickerDialog;
      Button con;
     Spinner spinner1;
@@ -46,11 +47,15 @@ public class create_acc_busi extends AppCompatActivity {
         setContentView(R.layout.activity_create_acc_busi);
         phone=(EditText)findViewById(R.id.mobileno1);
         con=(Button) findViewById(R.id.continue1);
-
+        name=(EditText)findViewById(R.id.name);
 
         spinner1=(Spinner)findViewById(R.id.spinner1);
         spinner2=(Spinner)findViewById(R.id.spinner2);
         spinner3=(Spinner)findViewById(R.id.spinner3);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // initiate the date picker and a button
       datepicker();
       new Thread(new Runnable() {
@@ -124,15 +129,24 @@ public class create_acc_busi extends AppCompatActivity {
         con.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(name.getText().toString().isEmpty())
+                {
+                    name.setError("Name Required");
+                }
+                if(date1.getText().toString().isEmpty())
+                {
+                    date1.setError("Required");
+                }
                 if(!phone.getText().toString().isEmpty() && phone.getText().toString().length() == 10) {
 
-                        String phoneNum = "+91"+phone.getText().toString();
+                    String phoneNum = "+91"+phone.getText().toString();
                     Intent in= new Intent(create_acc_busi.this,otp.class);
-                     in.putExtra("phoneno",phoneNum);
-                        startActivity(in);
+                    in.putExtra("phoneno",phoneNum);
+                    startActivity(in);
 
 
-                    }
+                }
                 else {
                     phone.setError("Valid Phone Required");
                 }

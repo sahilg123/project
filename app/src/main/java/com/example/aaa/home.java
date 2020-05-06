@@ -29,7 +29,7 @@ public class home extends AppCompatActivity {
                 startActivity(new Intent(home.this, create_acc_busi.class));
             }
         });
-        Button login = (Button) findViewById(R.id.letsstart);
+        Button login = (Button) findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
