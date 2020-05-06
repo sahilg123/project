@@ -15,5 +15,9 @@
     <string name="street">Street</string>
     <string name="continue1">CONTINUE</string>
     <string name="todo">TODO</string>
+    <string name="otp">OTP</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="valid_for_60_sec">Valid for 60 sec</string>
+    <string name="verify">Verify</string>
 
 </resources>

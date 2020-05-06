@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".otp">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -31,7 +30,7 @@
             android:layout_marginLeft="48dp"
             android:layout_marginRight="48dp"
             android:paddingBottom="5dp"
-            android:text="OTP"
+            android:text="@string/otp"
             android:textColor="#2699FB" />
 
         <EditText
@@ -44,14 +43,16 @@
             android:layout_marginRight="48dp"
             android:background="@drawable/border"
             android:ems="10"
-            android:hint="Enter OTP"
+            android:hint="@string/enter_otp"
             android:maxLength="6"
             android:inputType="number"
             android:paddingLeft="18dp"
+            android:paddingRight="18dp"
             android:paddingTop="12dp"
             android:paddingBottom="12dp"
-            android:textSize="14dp"
-            tools:textColorHint="#2699fb" />
+            android:textSize="14sp"
+            tools:textColorHint="#2699fb"
+            android:importantForAutofill="no" />
 
         <TextView
             android:id="@+id/timer"
@@ -62,7 +63,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="48dp"
             android:paddingBottom="5dp"
-            android:text="Valid for 60 sec"
+            android:text="@string/valid_for_60_sec"
             android:textColor="#2699FB"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -83,7 +84,7 @@
             android:background="@drawable/mybutton"
             android:fadingEdge="horizontal|vertical"
             android:radius="15dp"
-            android:text="Verify"
+            android:text="@string/verify"
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textSize="18sp"
