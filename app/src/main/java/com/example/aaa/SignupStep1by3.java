@@ -3,9 +3,11 @@ package com.example.aaa;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -18,7 +20,15 @@ public class SignupStep1by3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_step1by3);
+        Button xyz = (Button) findViewById(R.id.roundbuttonsignup);
 
+        xyz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SignupStep1by3.this, addsupplier.class));
+
+            }
+        });
         ImageButton date = (ImageButton) findViewById(R.id.datebutton);
         final EditText date1=(EditText) findViewById(R.id.date);
         // perform click event on edit text

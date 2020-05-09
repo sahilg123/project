@@ -1,24 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".addsupplier">
 
-    <TextView
-        android:id="@+id/textView9"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="84dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="16dp"
-        android:background="#9FD6FF"
-        android:paddingLeft="70dp"
-        android:paddingTop="10dp"
-        android:text="Company Name"
-        android:textColor="#2699fb"
-        android:textSize="14sp" />
+        android:layout_height="wrap_content">
 
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="84dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="16dp"
+            android:background="#9FD6FF"
+
+            android:minHeight="?attr/actionBarSize"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+
+            app:titleMarginBottom="55dp"
+            app:titleMarginStart="70dp"
+
+            />
+
+        <ImageButton
+            android:id="@+id/companyNameIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="false"
+
+            android:layout_marginLeft="38dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/roundbutton"
+            app:srcCompat="@drawable/ic_person_black_16dp" />
+
+        <TextView
+            android:id="@+id/companyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="86dp"
+            android:layout_marginTop="25dp"
+            android:paddingBottom="5dp"
+            android:text="Company Name"
+            android:textColor="#2699fb"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/companyName"
+            android:layout_marginLeft="86dp"
+            android:text="User Name"
+            android:textColor="#2699fb" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="243dp"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/suppliers"
+            style="@style/Widget.AppCompat.Button"
+
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="24dp"
+
+            android:layout_marginTop="0dp"
+            android:background="@drawable/mybutton"
+            android:fadingEdge="horizontal|vertical"
+            android:radius="15dp"
+            android:text="Suppliers"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/customers"
+            style="@style/Widget.AppCompat.Button"
+            android:textColor="#FFFFFF"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="24dp"
+
+            android:layout_marginTop="69dp"
+            android:background="@drawable/mybutton"
+            android:fadingEdge="horizontal|vertical"
+            android:radius="15dp"
+            android:text="Customers"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/inventory"
+            style="@style/Widget.AppCompat.Button"
+            android:textColor="#FFFFFF"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="24dp"
+
+            android:layout_marginTop="138dp"
+            android:background="@drawable/mybutton"
+            android:fadingEdge="horizontal|vertical"
+            android:radius="15dp"
+            android:text="Inventory"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/store"
+            style="@style/Widget.AppCompat.Button"
+            android:textColor="#FFFFFF"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="24dp"
+
+            android:layout_marginTop="207dp"
+            android:background="@drawable/mybutton"
+            android:fadingEdge="horizontal|vertical"
+            android:radius="15dp"
+            android:text="Store"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="390dp"
+            android:layout_marginLeft="250dp">
+
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundbutton"
+                app:srcCompat="@drawable/ic_chat_bubble_16dp" />
+            <!--TextView
+                android:id="@+id/chatText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/imageButton2"
+                android:layout_alignTop="@+id/imageButton2"
+                android:layout_alignRight="@+id/imageButton2"
+                android:layout_alignBottom="@+id/imageButton2"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:text="Chat"
+                android:textColor="#FFFFFF"
+                />-->
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/roundbutton"
+                app:srcCompat="@drawable/ic_call_white_16dp" />
+
+           <!-- <TextView
+                android:id="@+id/cText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/imageButton3"
+                android:layout_alignTop="@+id/imageButton3"
+                android:layout_alignRight="@+id/imageButton3"
+                android:layout_alignBottom="@+id/imageButton3"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:text="Call"
+                android:textColor="#FFFFFF"
+                />-->
+        </LinearLayout>
+
+    </RelativeLayout>
 </RelativeLayout>
