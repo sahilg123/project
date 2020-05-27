@@ -67,7 +67,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_marginTop="243dp"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <Button
             android:id="@+id/suppliers"
@@ -172,11 +172,11 @@
 
             <ImageButton
                 android:id="@+id/imageButton2"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_weight="1"
                 android:background="@drawable/roundbutton"
-                app:srcCompat="@drawable/ic_chat_bubble_16dp" />
+                app:srcCompat="@drawable/chat_26dp" />
             <!--TextView
                 android:id="@+id/chatText"
                 android:layout_width="wrap_content"
@@ -193,12 +193,13 @@
 
             <ImageButton
                 android:id="@+id/imageButton3"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_weight="1"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:background="@drawable/roundbutton"
-                app:srcCompat="@drawable/ic_call_white_16dp" />
+                app:srcCompat="@drawable/call_36dp"
+                android:contentDescription="@string/todo" />
 
            <!-- <TextView
                 android:id="@+id/cText"

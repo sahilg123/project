@@ -19,5 +19,9 @@
     <string name="enter_otp">Enter OTP</string>
     <string name="valid_for_60_sec">Valid for 60 sec</string>
     <string name="verify">Verify</string>
+    <string name="login">LOGIN</string>
+    <string name="register_as_business">REGISTER AS BUSINESS</string>
+    <string name="register_as_personal">REGISTER AS PERSONAL</string>
+
 
 </resources>

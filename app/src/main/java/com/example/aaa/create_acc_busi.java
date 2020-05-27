@@ -27,6 +27,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
+import java.util.Objects;
 
 public class create_acc_busi extends AppCompatActivity {
 
@@ -54,7 +55,7 @@ public class create_acc_busi extends AppCompatActivity {
         spinner3=(Spinner)findViewById(R.id.spinner3);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // initiate the date picker and a button
       datepicker();
@@ -196,15 +197,11 @@ private void datepicker()
             is.close();
             String json = new String(data, "UTF-8");
             jsonArray=new JSONArray(json);
-            if (jsonArray != null) {
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    cList.add(jsonArray.getJSONObject(i).getString("name"));
-                }
+            for (int i = 0; i < jsonArray.length(); i++) {
+                cList.add(jsonArray.getJSONObject(i).getString("name"));
             }
-        }catch (IOException e){
+        }catch (IOException | JSONException e){
             e.printStackTrace();
-        }catch (JSONException je){
-            je.printStackTrace();
         }
         return cList;
     }

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -59,7 +60,7 @@
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="200dp"
-                        android:layout_marginTop="51dp"
+                        android:layout_marginTop="50dp"
                         android:gravity="center_horizontal">
 
 
@@ -78,7 +79,7 @@
                             android:textSize="12dp" />
 
                         <EditText
-                            android:id="@+id/name"
+                            android:id="@+id/name2"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:layout_centerHorizontal="true"
@@ -98,7 +99,7 @@
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="200dp"
-                        android:layout_marginTop="151dp"
+                        android:layout_marginTop="140dp"
                         android:gravity="center_horizontal">
 
                         <TextView
@@ -136,7 +137,7 @@
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="200dp"
-                        android:layout_marginTop="251dp"
+                        android:layout_marginTop="230dp"
                         android:gravity="center_horizontal">
 
                         <TextView
@@ -174,7 +175,7 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="200dp"
-                    android:layout_marginTop="351dp"
+                    android:layout_marginTop="320dp"
                     android:gravity="center_horizontal">
 
                     <TextView
@@ -192,84 +193,226 @@
 
 
 
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginRight="32dp">
                         <EditText
                             android:id="@+id/date"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="48dp"
-                            android:layout_marginLeft="32dp"
                             android:layout_marginTop="25dp"
-                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
                             android:background="@drawable/border"
-                            android:textColor="#2699FB"
                             android:ems="10"
                             android:inputType="date"
                             android:paddingLeft="18dp"
+                            android:paddingRight="18dp"
                             android:paddingTop="12dp"
-
                             android:paddingBottom="12dp"
-                            android:textSize="14dp" />
+                            android:textSize="14sp"
+                            android:hint="@string/date_of_birth"
+                            android:importantForAutofill="no" />
 
                         <ImageButton
                             android:id="@+id/datebutton"
                             android:layout_width="35dp"
                             android:layout_height="48dp"
-                            android:layout_marginLeft="0dp"
                             android:layout_marginTop="25dp"
-                            android:layout_marginRight="32dp"
-
                             android:background="@drawable/calender"
-                            android:text="C" />
+                            android:text="@string/calender_image"
+                            android:contentDescription="@string/todo" />
                     </LinearLayout>
                 </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="451dp"
-                    android:gravity="center_horizontal">
-                    <TextView
-                        android:id="@+id/country"
-                        android:layout_width="match_parent"
-                        android:textColor="#2699FB"
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="32dp"
-                        android:layout_marginTop="5dp"
-android:layout_marginRight="32dp"
-                        android:ems="10"
+                        android:layout_marginTop="410dp"
+                        android:gravity="center_horizontal">
 
-                        android:inputType="textPersonName"
-                        android:text="Country/Region"
-                        android:textSize="12dp" />
+                        <TextView
+                            android:id="@+id/country"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="5dp"
+                            android:ems="10"
+                            android:textColor="#2699FB"
+                            android:text="@string/country_region"
+                            android:textSize="12sp" />
 
-                    <Spinner
-                        android:id="@+id/spinner1"
+                        <Spinner
+                            android:id="@+id/spinner1"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginRight="32dp"
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginTop="25dp"
+                            android:background="@drawable/border"
+                            android:paddingLeft="18dp"
+                            android:paddingRight="18dp"
+                            android:paddingTop="12dp"
+                            android:paddingBottom="12dp"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="500dp"
+                        android:gravity="center_horizontal">
+
+                        <TextView
+                            android:id="@+id/state"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="5dp"
+                            android:ems="10"
+                            android:textColor="#2699FB"
+                            android:text="@string/state"
+                            android:textSize="12sp" />
+
+                        <Spinner
+
+                            android:id="@+id/spinner2"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginTop="25dp"
+                            android:background="@drawable/border"
+                            android:layout_marginRight="32dp"
+                            android:paddingLeft="18dp"
+                            android:paddingRight="18dp"
+                            android:paddingTop="12dp"
+                            android:paddingBottom="12dp"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="590dp"
+                        android:gravity="center_horizontal">
+
+                        <TextView
+                            android:id="@+id/city"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="5dp"
+                            android:ems="10"
+                            android:textColor="#2699FB"
+                            android:text="@string/city"
+                            android:textSize="12sp" />
+
+                        <Spinner
+
+                            android:id="@+id/spinner3"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginRight="32dp"
+                            android:layout_marginTop="25dp"
+                            android:background="@drawable/border"
+
+                            android:paddingLeft="18dp"
+                            android:paddingRight="18dp"
+                            android:paddingTop="12dp"
+                            android:paddingBottom="12dp"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="58dp"
-                        android:layout_marginLeft="32dp"
-                        android:layout_marginTop="25dp"
-                        android:textColor="#2699FB"
-                        android:layout_marginRight="32dp"
-                        android:background="@drawable/border"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="680dp"
+                        android:gravity="center_horizontal">
 
-                        android:paddingLeft="18dp"
-                        android:paddingTop="12dp"
-                        android:paddingBottom="12dp"
+                        <TextView
+                            android:id="@+id/Street"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginRight="32dp"
+                            android:layout_marginTop="5dp"
+                            android:ems="10"
+                            android:textColor="#2699FB"
+                            android:text="@string/street"
+                            android:textSize="12sp" />
 
+                        <EditText
+                            android:id="@+id/street1"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginRight="32dp"
+                            android:background="@drawable/border"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:paddingLeft="18dp"
+                            android:paddingRight="18dp"
+                            android:paddingTop="12dp"
+                            android:paddingBottom="12dp"
+                            android:textSize="14sp"
+                            android:hint="@string/street"
+                            android:importantForAutofill="no" />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="770dp"
+                        android:gravity="center_horizontal">
 
-                        android:textSize="14dp" />
-                </RelativeLayout>
+                        <TextView
+                            android:id="@+id/mobileno"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginTop="5dp"
+                            android:textColor="#2699FB"
+                            android:layout_marginRight="32dp"
+                            android:ems="10"
+                            android:text="@string/mobile_number"
+                            android:textSize="12sp" />
 
-                    <Button
+                        <EditText
+                            android:id="@+id/mobileno2"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginRight="32dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/border"
+                            android:ems="10"
+                            android:hint="@string/mobile_number"
+                            android:inputType="phone"
+                            android:paddingLeft="18dp"
+                            android:paddingRight="18dp"
+                            android:paddingTop="12dp"
+                            android:paddingBottom="12dp"
+                            android:textSize="14sp"
+                            android:importantForAutofill="no" />
+                    </RelativeLayout>
+                    <ImageButton
                         android:id="@+id/roundbuttonsignup"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:layout_marginLeft="300dp"
-                        android:layout_marginTop="553dp"
-                        android:background="@drawable/roundbutton" />
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="880dp"
+                        app:srcCompat="@drawable/forward_arrow_signup"
+                        android:background="@drawable/roundbutton"
+                        android:contentDescription="@string/todo" />
 
                 </RelativeLayout>
 

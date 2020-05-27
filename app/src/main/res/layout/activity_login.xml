@@ -28,49 +28,11 @@
         android:orientation="vertical"
         >
 
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:layout_marginTop="192dp"
-            android:gravity="center_horizontal">
-
-
-            <TextView
-                android:id="@+id/name1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#2699FB"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="32dp"
-                android:ems="10"
-
-                android:inputType="textPersonName"
-                android:text="Full Name"
-                android:textSize="12dp" />
-
-            <EditText
-                android:id="@+id/name"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="32dp"
-                android:textColor="#2699FB"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="32dp"
-                android:background="@drawable/border"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:paddingLeft="18dp"
-                android:paddingTop="12dp"
-                android:paddingBottom="12dp"
-                android:textSize="14dp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:layout_marginTop="292dp"
             android:gravity="center_horizontal">
 
             <TextView
@@ -109,7 +71,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="200dp"
-            android:layout_marginTop="392dp"
+            android:layout_marginTop="292dp"
             android:gravity="center_horizontal">
 
             <TextView
@@ -154,7 +116,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="32dp"
 
-            android:layout_marginTop="583dp"
+            android:layout_marginTop="430dp"
             android:background="@drawable/mybutton"
             android:fadingEdge="horizontal|vertical"
             android:radius="15dp"
