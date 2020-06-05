@@ -17,7 +17,7 @@ Button con;
         con.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(compdetails.this , otp.class);
+                Intent in = new Intent(compdetails.this , addsupplier.class);
                 startActivity(in);
             }
         });

@@ -14,7 +14,7 @@ public class home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-       // Intent intent = getIntent();
+        // Intent intent = getIntent();
         Button personalbutton = (Button) findViewById(R.id.personalbutton);
         personalbutton.setOnClickListener(new View.OnClickListener() {
             @Override

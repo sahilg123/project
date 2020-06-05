@@ -2,6 +2,7 @@ package com.example.aaa;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
@@ -20,10 +22,11 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class SignupStep1by3 extends AppCompatActivity {
     JSONObject jsonobject;
@@ -92,6 +95,7 @@ public class SignupStep1by3 extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, final int position, long id) {
                 new Thread(new Runnable() {
+                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                     @Override
                     public void run() {
                         ArrayList<String> items2=getStates("countries+states+cities.json",position);
@@ -190,7 +194,9 @@ public class SignupStep1by3 extends AppCompatActivity {
         }
         return cList;
     }
-    private ArrayList<String> getStates(String fileName,int pos){
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private ArrayList<String> getStates(String fileName, int pos){
         JSONArray jsonArray=null;
         ArrayList<String> cList=new ArrayList<String>();
         try {
@@ -199,7 +205,7 @@ public class SignupStep1by3 extends AppCompatActivity {
             byte[] data = new byte[size];
             is.read(data);
             is.close();
-            String json = new String(data, StandardCharsets.UTF_8);
+            String json = new String(data, UTF_8);
             jsonArray=new JSONArray(json);
             if (jsonArray != null) {
                 Iterator st =jsonArray.getJSONObject(pos).getJSONObject("states").keys();

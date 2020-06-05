@@ -16,40 +16,45 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.google.firebase.auth.PhoneAuthCredential;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Objects;
 
 public class create_acc_busi extends AppCompatActivity {
 
-    PhoneAuthCredential credential;
+
     ImageButton date;
     EditText date1;
-    EditText phone,name;
+    EditText phone,name,email,password;
     DatePickerDialog datePickerDialog;
-     Button con;
+    Button con;
     Spinner spinner1;
     Spinner spinner2;
     Spinner spinner3;
     JSONObject jsonobject;
+    Map<String,String> user;
     private Handler mainHandler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_acc_busi);
-        phone=(EditText)findViewById(R.id.mobileno1);
-        con=(Button) findViewById(R.id.continue1);
-        name=(EditText)findViewById(R.id.name);
+        phone= findViewById(R.id.mobileno1);
+        con= findViewById(R.id.continue1);
+        name= findViewById(R.id.name);
+        email= findViewById(R.id.email);
 
+        password= findViewById(R.id.password);
+        user=new HashMap<>();
         spinner1=(Spinner)findViewById(R.id.spinner1);
         spinner2=(Spinner)findViewById(R.id.spinner2);
         spinner3=(Spinner)findViewById(R.id.spinner3);
@@ -58,24 +63,24 @@ public class create_acc_busi extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // initiate the date picker and a button
-      datepicker();
-      new Thread(new Runnable() {
-          @Override
-          public void run() {
+        datepicker();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
 
-              final ArrayList<String> items1=getCountries("countries+states+cities.json");
-              final ArrayAdapter<String> adapter1=new ArrayAdapter<String>(create_acc_busi.this,android.R.layout.simple_list_item_1,items1);
-              adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                final ArrayList<String> items1=getCountries("countries+states+cities.json");
+                final ArrayAdapter<String> adapter1=new ArrayAdapter<String>(create_acc_busi.this,android.R.layout.simple_list_item_1,items1);
+                adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
-              mainHandler.post(new Runnable() {
-                  @Override
-                  public void run() {
-                      spinner1.setAdapter(adapter1);
-                  }
-              });
-          }
-      }).start();
+                mainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        spinner1.setAdapter(adapter1);
+                    }
+                });
+            }
+        }).start();
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, final int position, long id) {
@@ -141,10 +146,20 @@ public class create_acc_busi extends AppCompatActivity {
                 }
                 if(!phone.getText().toString().isEmpty() && phone.getText().toString().length() == 10) {
 
+                    user.put("name",name.getText().toString());
+                    user.put("email",email.getText().toString());
+                    user.put("password",password.getText().toString());
+                    user.put("DOB",date1.getText().toString());
+                    user.put("country",spinner1.getSelectedItem().toString());
+                    user.put("state",spinner2.getSelectedItem().toString());
+                    user.put("city",spinner3.getSelectedItem().toString());
+                    user.put("street",name.getText().toString());
                     String phoneNum = "+91"+phone.getText().toString();
+                    user.put("mobile",phoneNum);
                     Intent in= new Intent(create_acc_busi.this,otp.class);
-                    in.putExtra("phoneno",phoneNum);
+                    in.putExtra("user", (Serializable)user);
                     startActivity(in);
+
 
 
                 }
@@ -156,36 +171,36 @@ public class create_acc_busi extends AppCompatActivity {
 
     }
 
-private void datepicker()
-{
-    date = (ImageButton) findViewById(R.id.datebutton);
-    date1=(EditText) findViewById(R.id.date);
-    // perform click event on edit text
-    date.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            // calender class's instance and get current date , month and year from calender
-            final Calendar c = Calendar.getInstance();
-            int mYear = c.get(Calendar.YEAR); // current year
-            int mMonth = c.get(Calendar.MONTH); // current month
-            int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
-            // date picker dialog
-            datePickerDialog = new DatePickerDialog(create_acc_busi.this,
-                    new DatePickerDialog.OnDateSetListener() {
+    private void datepicker()
+    {
+        date = (ImageButton) findViewById(R.id.datebutton);
+        date1=(EditText) findViewById(R.id.date);
+        // perform click event on edit text
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // calender class's instance and get current date , month and year from calender
+                final Calendar c = Calendar.getInstance();
+                int mYear = c.get(Calendar.YEAR); // current year
+                int mMonth = c.get(Calendar.MONTH); // current month
+                int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+                // date picker dialog
+                datePickerDialog = new DatePickerDialog(create_acc_busi.this,
+                        new DatePickerDialog.OnDateSetListener() {
 
-                        @Override
-                        public void onDateSet(DatePicker view, int year,
-                                              int monthOfYear, int dayOfMonth) {
-                            // set day of month , month and year value in the edit text
-                            date1.setText(dayOfMonth + "/"
-                                    + (monthOfYear + 1) + "/" + year);
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                // set day of month , month and year value in the edit text
+                                date1.setText(dayOfMonth + "/"
+                                        + (monthOfYear + 1) + "/" + year);
 
-                        }
-                    }, mYear, mMonth, mDay);
-            datePickerDialog.show();
-        }
-    });
-}
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.show();
+            }
+        });
+    }
     private ArrayList<String> getCountries(String fileName){
         JSONArray jsonArray=null;
         ArrayList<String> cList=new ArrayList<String>();
@@ -221,7 +236,7 @@ private void datepicker()
                 while(st.hasNext()) {
 
                     String currentKey = (String)st.next();
-                  cList.add(currentKey);
+                    cList.add(currentKey);
                 }
                 jsonobject=jsonArray.getJSONObject(pos);
             }
@@ -238,7 +253,7 @@ private void datepicker()
         try {
 
 
-               JSONArray st= jsonobject.getJSONObject("states").getJSONArray(state);
+            JSONArray st= jsonobject.getJSONObject("states").getJSONArray(state);
             for(int i=0;i<st.length();i++)
             {
                 String city = st.getString(i);

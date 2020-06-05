@@ -15,13 +15,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class otp extends AppCompatActivity {
@@ -29,18 +34,23 @@ public class otp extends AppCompatActivity {
     Button letsStart;
     String remainingTime="";
 
+    FirebaseFirestore fStore;
      TextView countDownText;
     long timeInMiliSeconds=60000;
     EditText otpCode;
     PhoneAuthCredential credential;
     String verificationId;
     String otp1="123456";
+    String userID;
+    Map<String,String> user;
     private Handler mainHandler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp);
         fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        userID = Objects.requireNonNull(fAuth.getCurrentUser()).getUid();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
@@ -48,8 +58,10 @@ public class otp extends AppCompatActivity {
         letsStart=(Button)findViewById(R.id.letsstart);
         otpCode=(EditText)findViewById(R.id.otp);
  Intent in=getIntent();
- final String phoneno=in.getStringExtra("phoneno");
- countDownText=(TextView)findViewById(R.id.timer);
+         user= (Map<String, String>) in.getSerializableExtra("user");
+ final String phoneno= user.get("mobile");
+
+        countDownText=(TextView)findViewById(R.id.timer);
 
 requestPhoneAuth(phoneno);
 
@@ -131,8 +143,17 @@ letsStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(otp.this, "Verified", Toast.LENGTH_SHORT).show();
-                     startActivity(new Intent(otp.this,compdetails.class));
+                    DocumentReference docRef = fStore.collection("users").document(userID);
+                    docRef.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+
+                            Toast.makeText(otp.this, "Verified", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(otp.this,compdetails.class));
+                            finish();
+                        }
+                    });
+
                 }else {
 
                     Toast.makeText(otp.this, "Wrong OTP", Toast.LENGTH_SHORT).show();
