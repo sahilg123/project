@@ -99,7 +99,7 @@ public class Chat_activity extends AppCompatActivity {
     private void sendMessage ( final String sender, final String receiver, final String message)
     {
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        reference = FirebaseDatabase.getInstance().getReference();
 
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("sender", sender);
