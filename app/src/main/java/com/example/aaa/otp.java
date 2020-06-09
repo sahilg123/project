@@ -26,7 +26,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class otp extends AppCompatActivity {
@@ -34,75 +33,74 @@ public class otp extends AppCompatActivity {
     Button letsStart;
     String remainingTime="";
 
-    FirebaseFirestore fStore;
-     TextView countDownText;
+
+    TextView countDownText;
     long timeInMiliSeconds=60000;
     EditText otpCode;
     PhoneAuthCredential credential;
     String verificationId;
     String otp1="123456";
-    String userID;
     Map<String,String> user;
+    FirebaseFirestore fStore;
     private Handler mainHandler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp);
         fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
-        userID = Objects.requireNonNull(fAuth.getCurrentUser()).getUid();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         letsStart=(Button)findViewById(R.id.letsstart);
         otpCode=(EditText)findViewById(R.id.otp);
- Intent in=getIntent();
-         user= (Map<String, String>) in.getSerializableExtra("user");
- final String phoneno= user.get("mobile");
+        fStore = FirebaseFirestore.getInstance();
+        Intent in=getIntent();
 
+        user= (Map<String, String>) in.getSerializableExtra("user");
+        final String phoneno= user.get("mobile");
         countDownText=(TextView)findViewById(R.id.timer);
 
-requestPhoneAuth(phoneno);
+        requestPhoneAuth(phoneno);
 
 
-letsStart.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        otp1 = otpCode.getText().toString();
-        if(otp1.isEmpty()){
-            otpCode.setError("Required");
-            return;
-        }
+        letsStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                otp1 = otpCode.getText().toString();
+                if(otp1.isEmpty()){
+                    otpCode.setError("Required");
+                    return;
+                }
 
-        credential = PhoneAuthProvider.getCredential(verificationId,otp1);
-        verifyAuth(credential);
-    }
-});
+                credential = PhoneAuthProvider.getCredential(verificationId,otp1);
+                verifyAuth(credential);
+            }
+        });
     }
     private void requestPhoneAuth(String phoneNumber){
 
-                CountDownTimer countDownTimer=new CountDownTimer(timeInMiliSeconds,1000) {
+        new CountDownTimer(timeInMiliSeconds,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeInMiliSeconds=millisUntilFinished;
+                remainingTime=Long.toString(timeInMiliSeconds/1000);
+                runOnUiThread(new Runnable() {
                     @Override
-                    public void onTick(long millisUntilFinished) {
-                        timeInMiliSeconds=millisUntilFinished;
-                        remainingTime=Long.toString(timeInMiliSeconds/1000);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                countDownText.setText("VALID FOR "+remainingTime+" SECONDS");
-                            }
-                        });
-
-
-
+                    public void run() {
+                        countDownText.setText("VALID FOR "+remainingTime+" SECONDS");
                     }
+                });
 
-                    @Override
-                    public void onFinish() {
 
-                    }
-                }.start();
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
 
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(phoneNumber, 60L, TimeUnit.SECONDS, this,
@@ -130,7 +128,7 @@ letsStart.setOnClickListener(new View.OnClickListener() {
                     }
                     @Override
                     public void onVerificationFailed(FirebaseException e) {
-
+                        Toast.makeText(otp.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -143,17 +141,14 @@ letsStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    DocumentReference docRef = fStore.collection("users").document(userID);
+                    DocumentReference docRef = fStore.collection("users").document(fAuth.getCurrentUser().getUid());
                     docRef.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
                         public void onSuccess(Void aVoid) {
-
-                            Toast.makeText(otp.this, "Verified", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(otp.this,compdetails.class));
-                            finish();
+                            Toast.makeText(otp.this, "profile created", Toast.LENGTH_SHORT).show();
                         }
                     });
-
+                    Toast.makeText(otp.this, "Verified", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(otp.this,compdetails.class));
                 }else {
 
                     Toast.makeText(otp.this, "Wrong OTP", Toast.LENGTH_SHORT).show();

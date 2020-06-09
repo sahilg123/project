@@ -22,11 +22,10 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class SignupStep1by3 extends AppCompatActivity {
     JSONObject jsonobject;
@@ -195,7 +194,7 @@ public class SignupStep1by3 extends AppCompatActivity {
         return cList;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+
     private ArrayList<String> getStates(String fileName, int pos){
         JSONArray jsonArray=null;
         ArrayList<String> cList=new ArrayList<String>();
@@ -205,7 +204,7 @@ public class SignupStep1by3 extends AppCompatActivity {
             byte[] data = new byte[size];
             is.read(data);
             is.close();
-            String json = new String(data, UTF_8);
+            String json = new String(data,Charset.defaultCharset());
             jsonArray=new JSONArray(json);
             if (jsonArray != null) {
                 Iterator st =jsonArray.getJSONObject(pos).getJSONObject("states").keys();

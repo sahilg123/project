@@ -34,7 +34,7 @@
             android:id="@+id/companyNameIcon"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_alignParentStart="false"
+
 
             android:layout_marginLeft="38dp"
             android:layout_marginTop="28dp"
@@ -66,7 +66,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="243dp"
+        android:layout_marginTop="100dp"
         android:layout_height="match_parent">
         <Button
             android:id="@+id/suppliers"
@@ -75,7 +75,8 @@
             android:layout_height="48dp"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="24dp"
-            android:layout_marginTop="0dp"
+            android:layout_above="@+id/customers"
+            android:layout_marginBottom="22dp"
             android:background="@drawable/mybutton"
             android:fadingEdge="horizontal|vertical"
             android:radius="15dp"
@@ -85,32 +86,26 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            />
 
         <Button
             android:id="@+id/customers"
-            style="@style/Widget.AppCompat.Button"
-            android:textColor="#FFFFFF"
+
             android:layout_width="match_parent"
             android:layout_height="48dp"
-
-            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/inventory"
+            android:layout_centerInParent="true"
             android:layout_marginLeft="24dp"
 
-            android:layout_marginTop="69dp"
             android:background="@drawable/mybutton"
             android:fadingEdge="horizontal|vertical"
             android:radius="15dp"
             android:text="Customers"
             android:textAllCaps="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#FFFFFF"
             android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/inventory"
@@ -118,11 +113,11 @@
             android:textColor="#FFFFFF"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-
+            android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="24dp"
 
-            android:layout_marginTop="138dp"
+            android:layout_marginTop="22dp"
             android:background="@drawable/mybutton"
             android:fadingEdge="horizontal|vertical"
             android:radius="15dp"
@@ -131,9 +126,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            />
 
         <Button
             android:id="@+id/store"
@@ -144,8 +137,8 @@
 
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="24dp"
-
-            android:layout_marginTop="207dp"
+android:layout_below="@+id/inventory"
+            android:layout_marginTop="22dp"
             android:background="@drawable/mybutton"
             android:fadingEdge="horizontal|vertical"
             android:radius="15dp"
@@ -154,23 +147,24 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+       />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="390dp"
-            android:layout_marginLeft="250dp">
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
+            >
 
 
             <ImageButton
                 android:id="@+id/button_chat"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_weight="1"
+
                 android:background="@drawable/roundbutton"
                 app:srcCompat="@drawable/chat_26dp" />
             <!--TextView
@@ -192,10 +186,11 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_weight="1"
-                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/roundbutton"
                 app:srcCompat="@drawable/call_36dp"
-                android:contentDescription="@string/todo" />
+                android:contentDescription="@string/todo"
+                android:layout_marginStart="20dp" />
 
            <!-- <TextView
                 android:id="@+id/cText"

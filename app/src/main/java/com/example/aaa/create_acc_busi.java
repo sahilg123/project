@@ -16,6 +16,8 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,22 +29,24 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
 
 public class create_acc_busi extends AppCompatActivity {
 
 
     ImageButton date;
     EditText date1;
-    EditText phone,name,email,password;
+    EditText phone,name,email,password,street;
     DatePickerDialog datePickerDialog;
     Button con;
     Spinner spinner1;
     Spinner spinner2;
     Spinner spinner3;
     JSONObject jsonobject;
-    Map<String,String> user;
+
+
+    FirebaseAuth fAuth;
+
+    HashMap<String,String> user;
     private Handler mainHandler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,15 +56,17 @@ public class create_acc_busi extends AppCompatActivity {
         con= findViewById(R.id.continue1);
         name= findViewById(R.id.name);
         email= findViewById(R.id.email);
-
+        street=findViewById(R.id.street1);
         password= findViewById(R.id.password);
         user=new HashMap<>();
-        spinner1=(Spinner)findViewById(R.id.spinner1);
-        spinner2=(Spinner)findViewById(R.id.spinner2);
-        spinner3=(Spinner)findViewById(R.id.spinner3);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        fAuth = FirebaseAuth.getInstance();
+
+        spinner1= findViewById(R.id.spinner1);
+        spinner2= findViewById(R.id.spinner2);
+        spinner3= findViewById(R.id.spinner3);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("");
+        getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // initiate the date picker and a button
         datepicker();
@@ -69,7 +75,7 @@ public class create_acc_busi extends AppCompatActivity {
             public void run() {
 
                 final ArrayList<String> items1=getCountries("countries+states+cities.json");
-                final ArrayAdapter<String> adapter1=new ArrayAdapter<String>(create_acc_busi.this,android.R.layout.simple_list_item_1,items1);
+                final ArrayAdapter<String> adapter1=new ArrayAdapter<>(create_acc_busi.this,android.R.layout.simple_list_item_1,items1);
                 adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
@@ -88,7 +94,7 @@ public class create_acc_busi extends AppCompatActivity {
                     @Override
                     public void run() {
                         ArrayList<String> items2=getStates("countries+states+cities.json",position);
-                        final ArrayAdapter<String> adapter2=new ArrayAdapter<String>(create_acc_busi.this,android.R.layout.simple_list_item_1,items2);
+                        final ArrayAdapter<String> adapter2=new ArrayAdapter<>(create_acc_busi.this,android.R.layout.simple_list_item_1,items2);
                         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         mainHandler.post(new Runnable() {
                             @Override
@@ -136,14 +142,7 @@ public class create_acc_busi extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(name.getText().toString().isEmpty())
-                {
-                    name.setError("Name Required");
-                }
-                if(date1.getText().toString().isEmpty())
-                {
-                    date1.setError("Required");
-                }
+
                 if(!phone.getText().toString().isEmpty() && phone.getText().toString().length() == 10) {
 
                     user.put("name",name.getText().toString());
@@ -159,6 +158,7 @@ public class create_acc_busi extends AppCompatActivity {
                     Intent in= new Intent(create_acc_busi.this,otp.class);
                     in.putExtra("user", (Serializable)user);
                     startActivity(in);
+
 
 
 
