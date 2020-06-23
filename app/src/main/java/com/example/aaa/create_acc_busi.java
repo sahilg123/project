@@ -145,16 +145,16 @@ public class create_acc_busi extends AppCompatActivity {
 
                 if(!phone.getText().toString().isEmpty() && phone.getText().toString().length() == 10) {
 
-                    user.put("name",name.getText().toString());
+                    user.put("fullName",name.getText().toString());
                     user.put("email",email.getText().toString());
                     user.put("password",password.getText().toString());
-                    user.put("DOB",date1.getText().toString());
+                    user.put("dob",date1.getText().toString());
                     user.put("country",spinner1.getSelectedItem().toString());
                     user.put("state",spinner2.getSelectedItem().toString());
                     user.put("city",spinner3.getSelectedItem().toString());
-                    user.put("street",name.getText().toString());
+                   // user.put("street",name.getText().toString());
                     String phoneNum = "+91"+phone.getText().toString();
-                    user.put("mobile",phoneNum);
+                    user.put("phone",phoneNum);
                     Intent in= new Intent(create_acc_busi.this,otp.class);
                     in.putExtra("user", (Serializable)user);
                     startActivity(in);

@@ -14,19 +14,23 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.android.volley.RequestQueue;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.Map;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class otp extends AppCompatActivity {
     FirebaseAuth fAuth;
@@ -40,8 +44,10 @@ public class otp extends AppCompatActivity {
     PhoneAuthCredential credential;
     String verificationId;
     String otp1="123456";
-    Map<String,String> user;
-    FirebaseFirestore fStore;
+    HashMap<String,String> user;
+
+
+     RequestQueue requestQueue;
     private Handler mainHandler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +60,12 @@ public class otp extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         letsStart=(Button)findViewById(R.id.letsstart);
         otpCode=(EditText)findViewById(R.id.otp);
-        fStore = FirebaseFirestore.getInstance();
+
         Intent in=getIntent();
 
-        user= (Map<String, String>) in.getSerializableExtra("user");
-        final String phoneno= user.get("mobile");
+        user= (HashMap<String, String>) in.getSerializableExtra("user");
+        final String phoneno= user.get("phone");
+
         countDownText=(TextView)findViewById(R.id.timer);
 
         requestPhoneAuth(phoneno);
@@ -136,18 +143,45 @@ public class otp extends AppCompatActivity {
 
         );
     }
+    private void Submit()
+    {
+        Call<JSONObject> call=RetrofitClient
+                .getInstance()
+                .getApi()
+                .createuser(user.get("fullName"),user.get("email"),user.get("password"),user.get("dob"),user.get("country"),user.get("state"),user.get("city"),user.get("phone"));
+         call.enqueue(new Callback<JSONObject>() {
+             @Override
+             public void onResponse(Call<JSONObject> call, Response<JSONObject> response) {
+                 String s;
+                 if(response.body()!=null) {
+                     s = response.body().toString();
+                     Toast.makeText(getApplicationContext(), s , Toast.LENGTH_SHORT).show();
+                 }
+                 else
+                 Toast.makeText(getApplicationContext(),"no response",Toast.LENGTH_SHORT).show();
+
+             }
+
+
+             @Override
+             public void onFailure(Call<JSONObject> call, Throwable t) {
+                 Toast.makeText(getApplicationContext(), "failed", Toast.LENGTH_SHORT).show();
+             }
+         });
+
+
+    }
+
+
+
     private void verifyAuth(PhoneAuthCredential credential) {
         fAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    DocumentReference docRef = fStore.collection("users").document(fAuth.getCurrentUser().getUid());
-                    docRef.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(otp.this, "profile created", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+
                     Toast.makeText(otp.this, "Verified", Toast.LENGTH_SHORT).show();
+                    Submit();
                     startActivity(new Intent(otp.this,compdetails.class));
                 }else {
 
